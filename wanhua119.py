@@ -27,7 +27,7 @@ def main():
         print('No events in 5 minutes')
         return
 
-    message = "\nhttps://service119.tfd.gov.tw/service119/citizenCase/caseList"
+    message = "\nhttps://service119.tfd.gov.tw/service119/accCase"
     for case in wanhua_events:
         message += f"\n{case['inTime']}, {case['csKindName']}, {case['csPlaceFuzzy']}, {case['caseStatus']}"
 
