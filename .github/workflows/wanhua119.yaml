@@ -4,13 +4,13 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *'  # every 5 minutes
+  - cron: '*/5 * * * *'  # every 5 minutes
 
 jobs:
   execute_py:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run script file
       env:
         LINE_TOKENS: ${{ secrets.LINE_TOKENS }}
