@@ -1,0 +1,14 @@
+name: Wanhua 119
+on:
+  schedule:
+    - cron: '0/5 * * * *'
+
+jobs:
+  execute_py:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run script file
+      run: |
+         chmod +x ./action_test.py
+         ./action_test.py
