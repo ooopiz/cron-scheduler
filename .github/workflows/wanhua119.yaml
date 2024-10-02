@@ -16,4 +16,4 @@ jobs:
         SUPER_SECRET: ${{ secrets.SuperSecret }}
         SUPER_VAR: ${{ secrets.TESTVAR }}
       run: |
-        python3 ./action_test.py
+        python ./action_test.py
