@@ -13,7 +13,7 @@ def main():
 
     taipei_timezone = pytz.timezone('Asia/Taipei')
     now = datetime.now(taipei_timezone)
-    time_shift = now - timedelta(minutes=120)
+    time_shift = now - timedelta(minutes=30)
 
     url = "https://service119.tfd.gov.tw/service119/citizenCase/caseList"
     headers = {'User-Agent': 'Mozilla/5.0'}
