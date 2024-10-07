@@ -2,25 +2,23 @@
 
 import requests
 from datetime import datetime, timedelta
-import pytz
 import os
-
 
 def main():
     env_token = os.environ.get('LINE_TOKENS')
     if not env_token:
         raise ValueError('Token missing ...')
 
-    taipei_timezone = pytz.timezone('Asia/Taipei')
-    now = datetime.now(taipei_timezone)
-    time_shift = now - timedelta(minutes=30)
+    taipei_offset = timedelta(hours=8)  # Taipei is 8 hours ahead of UTC
+    filter_shift = timedelta(minutes=30)
+    utc_now = datetime.utcnow()
 
     url = "https://service119.tfd.gov.tw/service119/citizenCase/caseList"
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.post(url, headers=headers)
     data = response.json()
     wanhua_events = list(filter(
-        lambda x: '萬華區' in x['csPlaceFuzzy'] and datetime.strptime(x['inTime'], "%Y/%m/%d %H:%M:%S").replace(tzinfo=taipei_timezone) > time_shift,
+        lambda x: '萬華區' in x['csPlaceFuzzy'] and datetime.strptime(x['inTime'], "%Y/%m/%d %H:%M:%S") - taipei_offset > utc_now - filter_shift,
         data['rows']))
 
     if len(wanhua_events) == 0:
