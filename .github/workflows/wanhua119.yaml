@@ -15,6 +15,5 @@ jobs:
       env:
         LINE_TOKENS: ${{ secrets.LINE_TOKENS }}
       run: |
-        pip install pytz
         chmod +x ./wanhua119.py
         ./wanhua119.py
