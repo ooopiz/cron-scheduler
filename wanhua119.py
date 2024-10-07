@@ -27,10 +27,13 @@ def main():
         print('No events in 30 minutes')
         return
 
-    message = "\nhttps://service119.tfd.gov.tw/service119/accCase"
+    message_list = []
     for case in wanhua_events:
-        message += f"\n{case['inTime']} {case['csPlaceFuzzy']}, {case['csKindName']} {case['caseStatus']}"
+        message_list.append(f"{case['inTime']} {case['csPlaceFuzzy']}, {case['csKindName']} {case['caseStatus']}")
 
+    website = "https://service119.tfd.gov.tw/service119/accCase"
+    message_list.append(website)
+    message = "\n%s" % ('\n'.join(message_list))
     print(message)
 
     token_list = env_token.split(';')
