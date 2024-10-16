@@ -10,7 +10,7 @@ def main():
         raise ValueError('Token missing ...')
 
     taipei_offset = timedelta(hours=8)  # Taipei is 8 hours ahead of UTC
-    filter_shift = timedelta(minutes=30)
+    filter_shift = timedelta(minutes=20)
     utc_now = datetime.utcnow()
 
     url = "https://service119.tfd.gov.tw/service119/citizenCase/caseList"
@@ -22,7 +22,7 @@ def main():
         data['rows']))
 
     if len(wanhua_events) == 0:
-        print('No events in 30 minutes')
+        print('No events in 20 minutes')
         return
 
     message_list = []
